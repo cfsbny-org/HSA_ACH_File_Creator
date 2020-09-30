@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.875, 17.75" name="CfsMasterDb">
+  <DataContextMoniker Name="/CfsMasterDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="df7efa15-d7b4-4403-896c-5a631958ac26" absoluteBounds="0.75, 5.75, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/CheckStubDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5d49d21-415d-4e60-af4e-06bb2ac0afa2" absoluteBounds="0.765, 6.21, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="180e3e48-f9d8-4563-b27f-f1f4c1a01039" absoluteBounds="3.75, 5.75, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/CheckStubYtd" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9fc338e1-84c2-4291-9617-c7f334bc8e05" absoluteBounds="3.765, 6.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="45a810b9-39b4-463c-805c-23874e37f795" absoluteBounds="6.75, 5.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/CheckStubPtoBalance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="022c3a66-4627-412f-b46f-9652a3d8ffb0" absoluteBounds="6.7650000000000006, 6.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="136feca1-eaae-4361-8195-ae8f0d0ab1ad" absoluteBounds="0.75, 1.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/PayPeriod" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f25860e0-482a-42fd-951b-8371f16f8941" absoluteBounds="0.76500000059604645, 2.0850000008940697, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1d609f7-e692-40c3-8b7b-a82462d2705b" absoluteBounds="8.75, 0.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/CheckStub" />
+      <nestedChildShapes>
+        <elementListCompartment Id="278bcad0-3ec9-4649-95a5-8b88580fe13e" absoluteBounds="8.765, 1.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24ab66cd-56b7-4cb9-bdfd-2782fca220ef" absoluteBounds="6.75, 8.75, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/CheckStubHeader" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91d389d1-ccaf-4493-ba4f-b5d3ebc508e4" absoluteBounds="6.7650000000000006, 9.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ba5d6fe8-a76a-42b3-a6b9-8cbffbd1e295" absoluteBounds="3.5, 1, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/Timesheet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="276e9507-af5c-4b3a-876a-e7201a659e2b" absoluteBounds="3.5150000005960464, 1.4600000008940697, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.70274983723958); (3.5 : 2.70274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CfsMasterDbDataContext/PayPeriod/PayPeriod_Timesheet" />
+      <nodes>
+        <classShapeMoniker Id="136feca1-eaae-4361-8195-ae8f0d0ab1ad" />
+        <classShapeMoniker Id="ba5d6fe8-a76a-42b3-a6b9-8cbffbd1e295" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5b214b50-041c-40b2-b2ed-28d9ddb50eee" absoluteBounds="0.75, 9.75, 2, 5.2323225911458309">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/Approval" />
+      <nestedChildShapes>
+        <elementListCompartment Id="efc66b0e-6a2f-4568-abec-a9e44093e9f2" absoluteBounds="0.76500000000000057, 10.21, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="09303672-d0c8-4ba2-b947-3a1f3304f257" absoluteBounds="6.25, 1.25, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/TimesheetDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7a16991f-7c1b-405b-92a3-74d9586b139b" absoluteBounds="6.2650000005960464, 1.7100000008940697, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 2.80850341796875); (6.25 : 2.80850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/CfsMasterDbDataContext/Timesheet/Timesheet_TimesheetDetail" />
+      <nodes>
+        <classShapeMoniker Id="ba5d6fe8-a76a-42b3-a6b9-8cbffbd1e295" />
+        <classShapeMoniker Id="09303672-d0c8-4ba2-b947-3a1f3304f257" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7175d61e-97ba-4094-b8c1-ead74877e400" absoluteBounds="9.75, 4.75, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/PtoRequest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e8b5f5cb-7cd0-4840-b8b4-57cb6a595ee1" absoluteBounds="9.765, 5.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bfd95861-49f8-40fd-92b2-032a25cd1cb4" absoluteBounds="9.75, 9.75, 2, 7.7322412109375023">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bbad9e7d-af31-4289-a946-2257e2e4d97a" absoluteBounds="9.765, 10.21, 1.9700000000000002, 7.1722412109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d4f749ef-13d6-4594-9c04-3707fec498fd" absoluteBounds="12.625, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CfsMasterDbDataContext/Holiday" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da2b7047-d38b-48dd-8b0f-49728643b777" absoluteBounds="12.64, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

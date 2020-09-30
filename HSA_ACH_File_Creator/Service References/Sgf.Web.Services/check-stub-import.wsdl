@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.falkschool.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.falkschool.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.falkschool.com/webservices/">
+      <s:element name="ImportCheckStubs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportCheckStubsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ImportCheckStubsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ImportCheckStubsSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportCheckStubs" />
+  </wsdl:message>
+  <wsdl:message name="ImportCheckStubsSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportCheckStubsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CheckStubImportSoap">
+    <wsdl:operation name="ImportCheckStubs">
+      <wsdl:input message="tns:ImportCheckStubsSoapIn" />
+      <wsdl:output message="tns:ImportCheckStubsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CheckStubImportSoap" type="tns:CheckStubImportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ImportCheckStubs">
+      <soap:operation soapAction="http://www.falkschool.com/webservices/ImportCheckStubs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CheckStubImportSoap12" type="tns:CheckStubImportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ImportCheckStubs">
+      <soap12:operation soapAction="http://www.falkschool.com/webservices/ImportCheckStubs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CheckStubImport">
+    <wsdl:port name="CheckStubImportSoap" binding="tns:CheckStubImportSoap">
+      <soap:address location="http://webservices.falkschool.com/ess/check-stub-import.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CheckStubImportSoap12" binding="tns:CheckStubImportSoap12">
+      <soap12:address location="http://webservices.falkschool.com/ess/check-stub-import.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

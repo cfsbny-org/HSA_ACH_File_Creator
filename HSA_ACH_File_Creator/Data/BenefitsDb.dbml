@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Benefits" Class="BenefitsDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=cfs-intranet;Initial Catalog=Benefits;Integrated Security=True" SettingsObjectName="Cfs.Custom.Software.Properties.Settings" SettingsPropertyName="BenefitsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblStatus" Member="Lookup_Status">
+    <Type Name="Lookup_Status">
+      <Column Name="statusId" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="statusDesc" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Lookup_Status_ACHFile" Member="ACHFiles" ThisKey="statusId" OtherKey="achFileStatus" Type="ACHFile" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblACHFiles" Member="ACHFiles">
+    <Type Name="ACHFile">
+      <Column Name="achBatchId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="achBatchCreated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="achBatchCreatedBy" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="achCheckDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="achCompany" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="achTotalAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="achFileStatus" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="ACHFile_ACHDetail" Member="ACHDetails" Storage="_tblACHDetails" ThisKey="achBatchId" OtherKey="achBatchId" Type="ACHDetail" />
+      <Association Name="Lookup_Status_ACHFile" Member="Lookup_Status" ThisKey="achFileStatus" OtherKey="statusId" Type="Lookup_Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblFalkCheckStubs" Member="FalkCheckStubs">
+    <Type Name="FalkCheckStub">
+      <Column Name="stubBatchId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stubBatchCreated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="stubBatchCreatedBy" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="stubBatchCheckDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="isUploaded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="uploadedStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblFalkCheckHeaders" Member="FalkCheckHeaders">
+    <Type Name="FalkCheckHeader">
+      <Column Name="checkStubHeaderLineId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="grossPay" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="netPay" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodStart" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodEnd" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payToOrder" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="payToAddress" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="salaryRate" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="stubBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblFalkCheckStubDetails" Member="FalkCheckStubDetails">
+    <Type Name="FalkCheckStubDetail">
+      <Column Name="checkStubDetailId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="checkSectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itemCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="itemDescription" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="itemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="itemRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="itemQuantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="checkStubId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblFalkCheckStubsYtd" Member="FalkCheckStubsYtds">
+    <Type Name="FalkCheckStubsYtd">
+      <Column Name="checkStubYtdLineId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="checkSectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codeType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="itemCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ytdAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="checkStubId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblACHDetails" Member="ACHDetails">
+    <Type Name="ACHDetail">
+      <Column Name="achDetailId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="achBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="employeeId" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="lastName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="firstName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="middleInitial" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="erAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="emAmount" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="accountType" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="routingNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="accountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="includeInFile" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ACHFile_ACHDetail" Member="ACHFile" ThisKey="achBatchId" OtherKey="achBatchId" Type="ACHFile" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblACHAccountTypes" Member="AccountTypes">
+    <Type Name="AccountType">
+      <Column Name="accountTypeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="accountTypeDetail" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblACHBankAccountTypes" Member="BankAccountTypes">
+    <Type Name="BankAccountType">
+      <Column Name="accountTypeId" Type="System.String" DbType="Char(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="accountTypeDetail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

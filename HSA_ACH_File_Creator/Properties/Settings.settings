@@ -1,0 +1,29 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cfs.Custom.Software.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BenefitsConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=cfs-intranet;Initial Catalog=Benefits;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=cfs-intranet;Initial Catalog=Benefits;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="CFS_MasterConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=cfs-intranet;Initial Catalog=CFS_Master;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=cfs-intranet;Initial Catalog=CFS_Master;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework</Value>
+    </Setting>
+    <Setting Name="CfsMasterServiceEntities" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;metadata=res://*/CfsMasterModel.csdl|res://*/CfsMasterModel.ssdl|res://*/CfsMasterModel.msl;provider=System.Data.SqlClient;provider connection string=&amp;amp;quot;data source=cfs-intranet;initial catalog=CFS_Master;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&amp;amp;quot;&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">metadata=res://*/CfsMasterModel.csdl|res://*/CfsMasterModel.ssdl|res://*/CfsMasterModel.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=cfs-intranet;initial catalog=CFS_Master;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&amp;quot;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

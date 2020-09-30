@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="CFS_Master" Class="CfsMasterDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=cfs-intranet;Initial Catalog=CFS_Master;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework" SettingsObjectName="Cfs.Custom.Software.Properties.Settings" SettingsPropertyName="CFS_MasterConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="ESS.CheckStubDetails" Member="CheckStubDetails">
+    <Type Name="CheckStubDetail">
+      <Column Name="checkStubDetailId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="checkStubBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="checkSectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="itemCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="itemDescription" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="itemAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="itemRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="itemQuantity" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.CheckStubYtds" Member="CheckStubYtds">
+    <Type Name="CheckStubYtd">
+      <Column Name="checkStubYtdId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="checkStubBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="codeType" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="itemCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ytdAmount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="ESS.CheckStubPtoBalances" Member="CheckStubPtoBalances">
+    <Type Name="CheckStubPtoBalance">
+      <Column Name="checkStubPtoId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="checkStubBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ptoCode" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ptoCarried" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ptoClose" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ptoTaken" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Organization.PayPeriods" Member="PayPeriods">
+    <Type Name="PayPeriod">
+      <Column Name="payPeriodId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="payrollYear" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="payDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodBeginDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodEndDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="timesheetsDue" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="isCurrent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PayPeriod_Timesheet" Member="Timesheets" ThisKey="payPeriodId" OtherKey="payPeriodId" Type="Timesheet" />
+    </Type>
+  </Table>
+  <Table Name="ESS.CheckStubs" Member="CheckStubs">
+    <Type Name="CheckStub">
+      <Column Name="stubBatchId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stubBatchCreated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="stubBatchCreatedBy" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="companyId" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="isUploaded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="uploadedStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="isVoided" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="voidedStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="voidedReason" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.CheckStubHeaders" Member="CheckStubHeaders">
+    <Type Name="CheckStubHeader">
+      <Column Name="checkStubHeaderId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="checkStubBatchId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="abraId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="checkDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="checkNumber" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="grossPay" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="netPay" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodStart" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodEnd" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="payToOrder" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="payToAddress" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="salaryRate" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="checkStatus" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.Timesheets" Member="Timesheets">
+    <Type Name="Timesheet">
+      <Column Name="timesheetId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="createdBy" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="timesheetCreated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="timesheetTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="costCenterId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="payPeriodId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="noPtoUsed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isPosted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="postedBy" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="postedTimestamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="comments" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="isProcessed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Timesheet_TimesheetDetail" Member="TimesheetDetails" ThisKey="timesheetId" OtherKey="timesheetId" Type="TimesheetDetail" />
+      <Association Name="PayPeriod_Timesheet" Member="PayPeriod" ThisKey="payPeriodId" OtherKey="payPeriodId" Type="PayPeriod" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.Approvals" Member="Approvals">
+    <Type Name="Approval">
+      <Column Name="approvalId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="approvalTimeStamp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="approvalTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="approvalObjectId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="approvalStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="superId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="superApprovalStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="superRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="superApprovalStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="superApprovalLocation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="superComments" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="directorId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="directorApprovalStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="directorRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="directorApprovalStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="directorApprovalLocation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="directorComments" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="vpId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="vpApprovalStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="vpRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="vpApprovalStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="vpApprovalLocation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="vpComments" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.TimesheetDetails" Member="TimesheetDetails">
+    <Type Name="TimesheetDetail">
+      <Column Name="timesheetDetailId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="timesheetId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="timesheetDetailDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="timeIn" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="lunchOut" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="lunchIn" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="timeOut" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="ptoCodeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ptoHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="workHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ptoComments" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="scheduledHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Timesheet_TimesheetDetail" Member="Timesheet" ThisKey="timesheetId" OtherKey="timesheetId" Type="Timesheet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="ESS.PtoRequests" Member="PtoRequests">
+    <Type Name="PtoRequest">
+      <Column Name="ptoRequestId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ptoRequestDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ptoRequestHours" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="ptoCodeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ptoComments" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="userCalledIn" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="postedBy" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="postedStamp" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="approvalId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="approvalStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="approvedStamp" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="actionsLog" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Users.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="userId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="employeeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="lastName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="firstName" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="userName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="eMail" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="securityLevelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="costCenterId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="locationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="supervisorId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="jobTitle" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="lastHireDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="accountCreated" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="workPhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="costCenter" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="locationCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="glAccountAdminAccess" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="flsaStatus" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="employType" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="abraHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="towerTraining" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="activeFlag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="birthDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="showBirthDate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="anasaziId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="anasaziLive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="anasaziTrain" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="anasaziTest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="outlookSetup" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isBenefitsEligible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="holidayHours" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="timesheetApproverId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="clinProductivity" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="essUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="termDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="mobileMiles" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="Organization.Holidays" Member="Holidays">
+    <Type Name="Holiday">
+      <Column Name="holidayId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="holidayYear" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="holidayDate" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="holidayDesc" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="Benefits.GetVisionSubscribers" Method="GetVisionSubscribers">
+    <Parameter Name="batchId" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetVisionSubscribersResult">
+      <Column Name="visionEnrollmentId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="[Group Code]" Member="Group_Code" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="[Benefit Option]" Member="Benefit_Option" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="[Relationship Code]" Member="Relationship_Code" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="[Coverage Effective Date]" Member="Coverage_Effective_Date" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Termination Date]" Member="Termination_Date" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="[Member ID]" Member="Member_ID" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Social Security Number]" Member="Social_Security_Number" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Member First Name]" Member="Member_First_Name" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="[Member Last Name]" Member="Member_Last_Name" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="[Date of Birth]" Member="Date_of_Birth" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="[Address Line 1]" Member="Address_Line_1" Type="System.String" DbType="VarChar(28)" CanBeNull="true" />
+      <Column Name="[Address Line 2]" Member="Address_Line_2" Type="System.String" DbType="VarChar(28)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Division Code]" Member="Division_Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Location Code]" Member="Location_Code" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="Benefits.GetVisionDependents" Method="GetVisionDependents">
+    <Parameter Name="batchId" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="GetVisionDependentsResult">
+      <Column Name="visionEnrollmentId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="visionDependentId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="dependentId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="[Group Code]" Member="Group_Code" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="[Benefit Option]" Member="Benefit_Option" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="[Relationship Code]" Member="Relationship_Code" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="[Coverage Effective Date]" Member="Coverage_Effective_Date" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Termination Date]" Member="Termination_Date" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+      <Column Name="[Social Security Number]" Member="Social_Security_Number" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Member First Name]" Member="Member_First_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Member Last Name]" Member="Member_Last_Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Date of Birth]" Member="Date_of_Birth" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="[Address Line 1]" Member="Address_Line_1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="[Address Line 2]" Member="Address_Line_2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="[Division Code]" Member="Division_Code" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Location Code]" Member="Location_Code" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="ESS.TimesheetBuckets" Method="TimesheetBuckets">
+    <Parameter Name="payPeriodId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimesheetBucketsResult">
+      <Column Name="timesheetId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="WeekNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="scheduledHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="abraHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalWeekHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalPtoHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeekOver" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorkOther" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorkOver" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="ESS.TimesheetBuckets_2" Method="TimesheetBuckets_2">
+    <Parameter Name="payPeriodId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="TimesheetBuckets_2Result">
+      <Column Name="timesheetId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="WeekNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="abraHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalWeekHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalPtoHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WeekOver" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorkOver" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WorkOther" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="ESS.PtoBuckets" Method="PtoBuckets">
+    <Parameter Name="payPeriodId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="PtoBucketsResult">
+      <Column Name="timesheetId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ptoCodeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ptoCodeString" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="totalPtoHours" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
