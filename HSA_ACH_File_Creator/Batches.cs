@@ -365,7 +365,7 @@ namespace Cfs.Custom.Software
         {
             long batchId = (long)this.aCHFileDataGridView.SelectedRows[0].Cells[0].Value;
             ReportDocument report = new ReportDocument();
-            report.Load(@"\\cfs-intranet\Abra Reports\Misc\ACH Batch Details.rpt");
+            report.Load(@"\\cfs-fileserv01\ACHReports\Abra Reports\Misc\ACH Batch Details.rpt");
 
             ParameterFieldDefinitions parameters = report.DataDefinition.ParameterFields;
             ParameterFieldDefinition parameter = parameters["BatchId"];

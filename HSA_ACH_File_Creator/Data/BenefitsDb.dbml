@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Benefits" Class="BenefitsDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=cfs-intranet;Initial Catalog=Benefits;Integrated Security=True" SettingsObjectName="Cfs.Custom.Software.Properties.Settings" SettingsPropertyName="BenefitsConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=cfs-sql;Initial Catalog=Benefits;Integrated Security=True" SettingsObjectName="Cfs.Custom.Software.Properties.Settings" SettingsPropertyName="BenefitsConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.tblStatus" Member="Lookup_Status">
     <Type Name="Lookup_Status">
       <Column Name="statusId" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

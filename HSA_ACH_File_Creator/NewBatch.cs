@@ -493,7 +493,7 @@ namespace Cfs.Custom.Software
         private void previewBatchToolStripButton1_Click(object sender, EventArgs e)
         {
             ReportDocument report = new ReportDocument();
-            report.Load(@"\\cfs-intranet\Abra Reports\Misc\ACH Batch Details.rpt");
+            report.Load(@"\\cfs-fileserv01\ACHReports\ACH Batch Details.rpt");
 
             ParameterFieldDefinitions parameters = report.DataDefinition.ParameterFields;
             ParameterFieldDefinition parameter = parameters["BatchId"];
