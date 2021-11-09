@@ -75,7 +75,8 @@
             this.companySelect.FormattingEnabled = true;
             this.companySelect.Items.AddRange(new object[] {
             "CFS",
-            "SGF"});
+            "SGF",
+            "SYB"});
             this.companySelect.Location = new System.Drawing.Point(111, 23);
             this.companySelect.Name = "companySelect";
             this.companySelect.Size = new System.Drawing.Size(121, 21);
@@ -156,7 +157,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(20, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Employer Total:";
             // 
@@ -165,7 +166,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(20, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Roth Total:";
             // 
@@ -174,7 +175,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(20, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Employee Total:";
             // 

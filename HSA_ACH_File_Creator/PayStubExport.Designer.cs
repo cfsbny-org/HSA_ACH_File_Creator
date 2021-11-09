@@ -192,7 +192,8 @@
             this.companyList.FormattingEnabled = true;
             this.companyList.Items.AddRange(new object[] {
             "CFS",
-            "SGF"});
+            "SGF",
+            "SYB"});
             this.companyList.Location = new System.Drawing.Point(128, 164);
             this.companyList.Name = "companyList";
             this.companyList.Size = new System.Drawing.Size(121, 23);

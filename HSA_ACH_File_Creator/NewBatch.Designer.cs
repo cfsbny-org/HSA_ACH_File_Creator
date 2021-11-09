@@ -117,7 +117,8 @@
             this.company.FormattingEnabled = true;
             this.company.Items.AddRange(new object[] {
             "CFS",
-            "SGF"});
+            "SGF",
+            "SYB"});
             this.company.Location = new System.Drawing.Point(133, 120);
             this.company.Name = "company";
             this.company.Size = new System.Drawing.Size(121, 21);

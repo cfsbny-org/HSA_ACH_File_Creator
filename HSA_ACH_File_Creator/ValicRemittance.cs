@@ -78,10 +78,15 @@ namespace Cfs.Custom.Software
                         case "SGF":
                             payGroupId = "GA71730002";
                             break;
+                        /////////////////////////////////////////////////////////////////////////////////////////
+                        /// SYB: Say Yes Buffalo
+                        case "SYB": /////////////////////////////////////////////////////////////////////////////////
+                            payGroupId = "GA71730003";
+                            break;
                     }
 
-                    
-                    
+
+
                     //string filePath = @"\\844dc2\jbowen\UltiPro\Valic\Demographics.xlsx";
 
 
@@ -106,28 +111,28 @@ namespace Cfs.Custom.Software
 
                             //demographics.Add(new Data.ValicDemographicsModel()
                             //{
-                                employee.employeeId = demoSheet.Cells[row, 2].Value.ToString().Trim();
-                                employee.employeeSsn = ProcessReaderString(demoSheet.Cells[row, 3].Value);
-                                employee.firstName = ProcessReaderString(demoSheet.Cells[row, 4].Value);
-                                employee.middleInit = ProcessReaderString(demoSheet.Cells[row, 5].Value);
-                                employee.lastName = ProcessReaderString(demoSheet.Cells[row, 6].Value);
-                                employee.address1 = ProcessReaderString(demoSheet.Cells[row, 7].Value);
-                                employee.address2 = ProcessReaderString(demoSheet.Cells[row, 8].Value);
-                                employee.addressCity = ProcessReaderString(demoSheet.Cells[row, 9].Value);
-                                employee.addressState = ProcessReaderString(demoSheet.Cells[row, 10].Value);
-                                employee.addressZip = ProcessReaderString(demoSheet.Cells[row, 11].Value);
-                                employee.addressCountry = ProcessReaderString(demoSheet.Cells[row, 12].Value);
-                                employee.birthDate = ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 13].Value.ToString()));
-                                employee.hireDate = ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 14].Value.ToString()));
-                                employee.homePhone = ProcessReaderString(demoSheet.Cells[row, 15].Value);
-                                employee.genderId = ProcessReaderString(demoSheet.Cells[row, 16].Value);
-                                employee.maritalStatus = ProcessReaderString(demoSheet.Cells[row, 17].Value);
-                                employee.activeStatus = ProcessReaderString(demoSheet.Cells[row, 18].Value);
-                                string termDate = demoSheet.Cells[row, 19].Value == null ? "NULL TERM DATE" : demoSheet.Cells[row, 19].Value.ToString();
-                                employee.statusChange = demoSheet.Cells[row, 19].Value == null ? DateTime.MinValue : ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 19].Value.ToString()));
-                                employee.payrollStatus = ProcessReaderString(demoSheet.Cells[row, 20].Value);
-                                employee.annualSalary = decimal.Parse(demoSheet.Cells[row, 21].Value.ToString());
-                                employee.payrollDate = parameters.payDate;
+                            employee.employeeId = demoSheet.Cells[row, 2].Value.ToString().Trim();
+                            employee.employeeSsn = ProcessReaderString(demoSheet.Cells[row, 3].Value);
+                            employee.firstName = ProcessReaderString(demoSheet.Cells[row, 4].Value);
+                            employee.middleInit = ProcessReaderString(demoSheet.Cells[row, 5].Value);
+                            employee.lastName = ProcessReaderString(demoSheet.Cells[row, 6].Value);
+                            employee.address1 = ProcessReaderString(demoSheet.Cells[row, 7].Value);
+                            employee.address2 = ProcessReaderString(demoSheet.Cells[row, 8].Value);
+                            employee.addressCity = ProcessReaderString(demoSheet.Cells[row, 9].Value);
+                            employee.addressState = ProcessReaderString(demoSheet.Cells[row, 10].Value);
+                            employee.addressZip = ProcessReaderString(demoSheet.Cells[row, 11].Value);
+                            employee.addressCountry = ProcessReaderString(demoSheet.Cells[row, 12].Value);
+                            employee.birthDate = ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 13].Value.ToString()));
+                            employee.hireDate = ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 14].Value.ToString()));
+                            employee.homePhone = ProcessReaderString(demoSheet.Cells[row, 15].Value);
+                            employee.genderId = ProcessReaderString(demoSheet.Cells[row, 16].Value);
+                            employee.maritalStatus = ProcessReaderString(demoSheet.Cells[row, 17].Value);
+                            employee.activeStatus = ProcessReaderString(demoSheet.Cells[row, 18].Value);
+                            string termDate = demoSheet.Cells[row, 19].Value == null ? "NULL TERM DATE" : demoSheet.Cells[row, 19].Value.ToString();
+                            employee.statusChange = demoSheet.Cells[row, 19].Value == null ? DateTime.MinValue : ConvertExcelSerialDate(int.Parse(demoSheet.Cells[row, 19].Value.ToString()));
+                            employee.payrollStatus = ProcessReaderString(demoSheet.Cells[row, 20].Value);
+                            employee.annualSalary = decimal.Parse(demoSheet.Cells[row, 21].Value.ToString());
+                            employee.payrollDate = parameters.payDate;
                             //});
 
                             demographics.Add(employee);
@@ -135,17 +140,17 @@ namespace Cfs.Custom.Software
 
                         }
 
-                        
+
                         demographics = demographics.Where(d => d.activeStatus == "A" || d.activeStatus == "L" || d.activeStatus == "S" || (d.activeStatus == "T" && d.statusChange >= DateTime.Today.AddDays(-30))).ToList();
 
                         package.Dispose();
-                        
+
                     }  //  if (this.openDemoFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 
 
                     #endregion
 
-                   
+
 
 
                     #region OPEN/READ DEDUCTIONS EXCEL FILE
@@ -165,7 +170,7 @@ namespace Cfs.Custom.Software
                         {
                             currentEmployeeId = deductSheet.Cells[row, 2].Value.ToString();
                             currentEmployeeName = deductSheet.Cells[row, 4].Value.ToString();
-                            
+
                             //deductions.Add(new Data.ValicDeductionsModel()
                             //{
                             //    employeeId = deductSheet.Cells[row, 2].Value.ToString().Trim(),
@@ -177,11 +182,11 @@ namespace Cfs.Custom.Software
 
                             Data.ValicDeductionsModel deductLine = new Data.ValicDeductionsModel();
 
-                             deductLine.employeeId = deductSheet.Cells[row, 2].Value.ToString().Trim();
-                             deductLine.deductionCode = deductSheet.Cells[row, 5].Value.ToString();
-                             deductLine.employeeAmount = deductSheet.Cells[row, 6].Value == null ? 0 : decimal.Parse(deductSheet.Cells[row, 6].Value.ToString());
-                             deductLine.employerAmount = deductSheet.Cells[row, 7].Value == null ? 0 : decimal.Parse(deductSheet.Cells[row, 7].Value.ToString());
-                             deductLine.loanId = deductSheet.Cells[row, 8].Value == null ? string.Empty : deductSheet.Cells[row, 8].Value.ToString();
+                            deductLine.employeeId = deductSheet.Cells[row, 2].Value.ToString().Trim();
+                            deductLine.deductionCode = deductSheet.Cells[row, 5].Value.ToString();
+                            deductLine.employeeAmount = deductSheet.Cells[row, 6].Value == null ? 0 : decimal.Parse(deductSheet.Cells[row, 6].Value.ToString());
+                            deductLine.employerAmount = deductSheet.Cells[row, 7].Value == null ? 0 : decimal.Parse(deductSheet.Cells[row, 7].Value.ToString());
+                            deductLine.loanId = deductSheet.Cells[row, 8].Value == null ? string.Empty : deductSheet.Cells[row, 8].Value.ToString();
 
                             deductions.Add(deductLine);
                         }
@@ -355,6 +360,10 @@ namespace Cfs.Custom.Software
                                 case "SGF":
                                     payrollFrequency = "SM";
                                     locationCode = "0002";
+                                    break;
+                                case "SYB":
+                                    payrollFrequency = "BW";
+                                    locationCode = "0003";
                                     break;
                             }
 
@@ -601,7 +610,7 @@ namespace Cfs.Custom.Software
                     this.employeeRothLabel.Text = summary.totalRoth == null ? "$0.00" : ((decimal)summary.totalRoth).ToString("c");
                     this.employerTotalLabel.Text = summary.totalEmployer == null ? "$0.00" : ((decimal)summary.totalEmployer).ToString("c");
                     this.loansTotalLabel.Text = summary.totalLoans == null ? "$0.00" : ((decimal)summary.totalLoans).ToString("c");
-                    
+
 
                 }
             }
@@ -621,8 +630,8 @@ namespace Cfs.Custom.Software
             List<Data.ValicDemographicsModel> demographics = new List<Data.ValicDemographicsModel>();
             List<Data.ValicDeductionsModel> deductions = new List<Data.ValicDeductionsModel>();
             List<Data.ValicRemittanceAmountsModel> remittances = new List<Data.ValicRemittanceAmountsModel>();
-            
-            
+
+
             List<Data.ValicFileLineModel> fileLines = new List<Data.ValicFileLineModel>();
 
 
@@ -637,6 +646,9 @@ namespace Cfs.Custom.Software
                     break;
                 case "SGF":
                     payGroupId = "GA71730002";
+                    break;
+                case "SYB":
+                    payGroupId = "GA71730003";
                     break;
             }
 
@@ -730,7 +742,7 @@ namespace Cfs.Custom.Software
                 //conn.Dispose();
             }
 
-            
+
             query = new StringBuilder();
 
 
@@ -742,7 +754,7 @@ namespace Cfs.Custom.Software
             //query.Append("AND (d.code LIKE 'MUT%' OR d.code LIKE 'ROT%' OR d.code LIKE 'VAC%') ");
             query.Append("AND c.chkdate = {" + parameters.payDate.ToShortDateString() + "} ");
             query.Append("AND c.chkstatus <> 'V';");
-            
+
             comm = new OleDbCommand(query.ToString(), conn);
             comm.CommandType = CommandType.Text;
 
@@ -793,7 +805,7 @@ namespace Cfs.Custom.Software
                 conn.Close();
                 conn.Dispose();
             }
-            
+
 
             if (conn.State == ConnectionState.Open)
             {
@@ -814,7 +826,7 @@ namespace Cfs.Custom.Software
                                                 Select(d => d.employeeAmount).Sum();
 
                 var rothTotal = employeeDeductions.Where(d => d.deductionCode.Contains("ROT")).Select(d => d.employeeAmount).Sum();
-                
+
                 var employerTotal = employeeDeductions.Where(d => d.deductionCode == "MUTR").Select(d => d.employerAmount).Sum();
 
                 var employeeLoans = employeeDeductions.Where(d => d.deductionCode.Contains("VAL")).ToList();
@@ -873,170 +885,238 @@ namespace Cfs.Custom.Software
 
             //try
             //{
-                //fileLines = (from e in demographics
-                //             //from r in remittances.Where(r => r.employeeId == e.employeeId).DefaultIfEmpty()
-                //             orderby e.lastName, e.firstName
-                //             select new Data.ValicFileLineModel
-                //             {
-                //                 employeeId = e.employeeId,
-                //                 employeeSsn = e.employeeSsn,
-                //                 firstName = e.firstName,
-                //                 middleInit = e.middleInit,
-                //                 lastName = e.lastName,
-                //                 address1 = e.address1,
-                //                 address2 = e.address2,
-                //                 addressCity = e.addressCity,
-                //                 addressState = e.addressState,
-                //                 addressZip = e.addressZip,
-                //                 payrollDate = e.payrollDate.ToString("MMddyyyy"),
-                //                 //employeeContrib = r == null ? 0 : r.employeeAmount,
-                //                 //employeeRoth = r == null ? 0 : r.employeeRoth,
-                //                 //employerContrib = r == null ? 0 : r.employerAmount,
-                //                 //loanRepayment = r == null ? 0 : r.loanRepayment,
-                //                 //loanId = r.loanId,
-                //                 birthDate = e.birthDate,
-                //                 hireDate = e.hireDate,
-                //                 homePhone = e.homePhone,
-                //                 genderId = e.genderId,
-                //                 maritalStatus = e.maritalStatus,
-                //                 activeStatus = e.activeStatus,
-                //                 statusChange = e.statusChange,
-                //                 payrollStatus = e.payrollStatus,
-                //                 annualSalary = e.annualSalary
-                //                 //sortOrder = r == null ? 1 : r.sortOrder
-                //             }).ToList();
+            //fileLines = (from e in demographics
+            //             //from r in remittances.Where(r => r.employeeId == e.employeeId).DefaultIfEmpty()
+            //             orderby e.lastName, e.firstName
+            //             select new Data.ValicFileLineModel
+            //             {
+            //                 employeeId = e.employeeId,
+            //                 employeeSsn = e.employeeSsn,
+            //                 firstName = e.firstName,
+            //                 middleInit = e.middleInit,
+            //                 lastName = e.lastName,
+            //                 address1 = e.address1,
+            //                 address2 = e.address2,
+            //                 addressCity = e.addressCity,
+            //                 addressState = e.addressState,
+            //                 addressZip = e.addressZip,
+            //                 payrollDate = e.payrollDate.ToString("MMddyyyy"),
+            //                 //employeeContrib = r == null ? 0 : r.employeeAmount,
+            //                 //employeeRoth = r == null ? 0 : r.employeeRoth,
+            //                 //employerContrib = r == null ? 0 : r.employerAmount,
+            //                 //loanRepayment = r == null ? 0 : r.loanRepayment,
+            //                 //loanId = r.loanId,
+            //                 birthDate = e.birthDate,
+            //                 hireDate = e.hireDate,
+            //                 homePhone = e.homePhone,
+            //                 genderId = e.genderId,
+            //                 maritalStatus = e.maritalStatus,
+            //                 activeStatus = e.activeStatus,
+            //                 statusChange = e.statusChange,
+            //                 payrollStatus = e.payrollStatus,
+            //                 annualSalary = e.annualSalary
+            //                 //sortOrder = r == null ? 1 : r.sortOrder
+            //             }).ToList();
 
-                this.dataWorker.ReportProgress(90, "Compiling remittance file...");
+            this.dataWorker.ReportProgress(90, "Compiling remittance file...");
 
-                //Excel.Application xl;
-                //Excel._Workbook workbook;
-                //Excel._Worksheet sheet;
-                ////Excel.Range range;
+            //Excel.Application xl;
+            //Excel._Workbook workbook;
+            //Excel._Worksheet sheet;
+            ////Excel.Range range;
 
-                //xl = new Excel.Application();
-                //xl.Visible = false;
+            //xl = new Excel.Application();
+            //xl.Visible = false;
 
-                //workbook = (Excel._Workbook)(xl.Workbooks.Add(Missing.Value));
-                //sheet = (Excel._Worksheet)workbook.ActiveSheet;
+            //workbook = (Excel._Workbook)(xl.Workbooks.Add(Missing.Value));
+            //sheet = (Excel._Worksheet)workbook.ActiveSheet;
 
 
-                using (StreamWriter writer = File.CreateText(parameters.fileName))
+            using (StreamWriter writer = File.CreateText(parameters.fileName))
+            {
+
+
+                StringBuilder lineText = new StringBuilder();
+
+
+                // HEADER ROW
+                lineText.Append("Format Code").Append(comma);
+                lineText.Append("Paygroup ID").Append(comma);
+                lineText.Append("SSN").Append(comma);
+                lineText.Append("Employee ID").Append(comma);
+                lineText.Append("Participant First Name").Append(comma);
+                lineText.Append("Participant Middle Name").Append(comma);
+                lineText.Append("Participant Last Name").Append(comma);
+                lineText.Append("Address 1").Append(comma);
+                lineText.Append("Address 2").Append(comma);
+                lineText.Append("City").Append(comma);
+                lineText.Append("State/Country Code").Append(comma);
+                lineText.Append("Zip").Append(comma);
+                lineText.Append("Payroll Frequency Code").Append(comma);
+                lineText.Append("Payroll Date").Append(comma);
+                lineText.Append("Employee Pre Tax Deferrals").Append(comma);
+                lineText.Append("Employee After Tax Roth").Append(comma);
+                lineText.Append("Employer Non Elective").Append(comma);
+                lineText.Append("Loan Repays").Append(comma);
+                lineText.Append("Contribution Slot 5").Append(comma);
+                lineText.Append("Loan ID").Append(comma);
+                lineText.Append("Birth Date").Append(comma);
+                lineText.Append("Hire Date").Append(comma);
+                lineText.Append("Phone").Append(comma);
+                lineText.Append("Address 3").Append(comma);
+                lineText.Append("Gender ID").Append(comma);
+                lineText.Append("Marital Status").Append(comma);
+                lineText.Append("Participant Status").Append(comma);
+                lineText.Append("Participant Status Change Date").Append(comma);
+                lineText.Append("Location Code/HR Area").Append(comma);
+                lineText.Append("HR Sub Area").Append(comma);
+                lineText.Append("Payroll Status Code").Append(comma);
+                lineText.Append("Annual Salary").Append(comma);
+                lineText.Append("Hours").Append(comma);
+                lineText.Append("Email Address").Append(comma);
+                lineText.Append("Employee Plan Eligibility Group Code/Payroll Code").Append(comma);
+                lineText.Append("Plan 1 Eligibility Date").Append(comma);
+                lineText.Append("Plan 2 Eligibility Date").Append(comma);
+                lineText.Append("Plan 1 Vesting Date").Append(comma);
+                lineText.Append("Plan 2 Vesting Date").Append(comma);
+                lineText.Append("Prior Employee ID").Append(comma);
+
+
+                writer.WriteLine(lineText.ToString());
+
+
+
+                foreach (var line in demographics.OrderBy(f => f.lastName).ThenBy(f => f.firstName))
                 {
 
-                    
-                    StringBuilder lineText = new StringBuilder();
+                    DateTime today = DateTime.Today;
+                    int employeeAge = today.Year - line.birthDate.Year;
+
+                    if (line.birthDate.Date > today.Date.AddYears(-employeeAge))
+                    {
+                        employeeAge--;
+                    }
+
+                    if (employeeAge < 21)
+                    {
+                        continue;
+                    }
+
+                    string payrollDate = parameters.payDate.ToString("MMddyyyy");
+
+                    string payrollFrequency = string.Empty;
+                    string payrollStatus = string.Empty;
+                    string locationCode = string.Empty;
+
+                    switch (parameters.companyId)
+                    {
+                        case "CFS":
+                            payrollFrequency = "BW";
+                            locationCode = "0001";
+                            break;
+                        case "SGF":
+                            payrollFrequency = "SM";
+                            locationCode = "0002";
+                            break;
+                        case "SYB":
+                            payrollFrequency = "BW";
+                            locationCode = "0003";
+                            break;
+                    }
 
 
-                    // HEADER ROW
-                    lineText.Append("Format Code").Append(comma);
-                    lineText.Append("Paygroup ID").Append(comma);
-                    lineText.Append("SSN").Append(comma);
-                    lineText.Append("Employee ID").Append(comma);
-                    lineText.Append("Participant First Name").Append(comma);
-                    lineText.Append("Participant Middle Name").Append(comma);
-                    lineText.Append("Participant Last Name").Append(comma);
-                    lineText.Append("Address 1").Append(comma);
-                    lineText.Append("Address 2").Append(comma);
-                    lineText.Append("City").Append(comma);
-                    lineText.Append("State/Country Code").Append(comma);
-                    lineText.Append("Zip").Append(comma);
-                    lineText.Append("Payroll Frequency Code").Append(comma);
-                    lineText.Append("Payroll Date").Append(comma);
-                    lineText.Append("Employee Pre Tax Deferrals").Append(comma);
-                    lineText.Append("Employee After Tax Roth").Append(comma);
-                    lineText.Append("Employer Non Elective").Append(comma);
-                    lineText.Append("Loan Repays").Append(comma);
-                    lineText.Append("Contribution Slot 5").Append(comma);
-                    lineText.Append("Loan ID").Append(comma);
-                    lineText.Append("Birth Date").Append(comma);
-                    lineText.Append("Hire Date").Append(comma);
-                    lineText.Append("Phone").Append(comma);
-                    lineText.Append("Address 3").Append(comma);
-                    lineText.Append("Gender ID").Append(comma);
-                    lineText.Append("Marital Status").Append(comma);
-                    lineText.Append("Participant Status").Append(comma);
-                    lineText.Append("Participant Status Change Date").Append(comma);
-                    lineText.Append("Location Code/HR Area").Append(comma);
-                    lineText.Append("HR Sub Area").Append(comma);
-                    lineText.Append("Payroll Status Code").Append(comma);
-                    lineText.Append("Annual Salary").Append(comma);
-                    lineText.Append("Hours").Append(comma);
-                    lineText.Append("Email Address").Append(comma);
-                    lineText.Append("Employee Plan Eligibility Group Code/Payroll Code").Append(comma);
-                    lineText.Append("Plan 1 Eligibility Date").Append(comma);
-                    lineText.Append("Plan 2 Eligibility Date").Append(comma);
-                    lineText.Append("Plan 1 Vesting Date").Append(comma);
-                    lineText.Append("Plan 2 Vesting Date").Append(comma);
-                    lineText.Append("Prior Employee ID").Append(comma);
-                    
-
-                    writer.WriteLine(lineText.ToString());
+                    switch (line.payrollStatus)
+                    {
+                        case "RFT":
+                            payrollStatus = "FT";
+                            break;
+                        case "RPT":
+                            payrollStatus = "PT";
+                            break;
+                        default:
+                            payrollStatus = "HO";
+                            break;
+                    }
 
 
+                    // CANADIAN ADDRESS (ONTARIO ONLY)
+                    if (line.addressState.Trim() == "ON")
+                    {
+                        line.address3 = string.Format("{0}, {1}, {2}", line.addressCity, line.addressState, line.addressZip);
+                        line.addressCity = "Canada";
+                        line.addressState = "ZZ";
+                        line.addressZip = "000000000";
+                    }
 
-                    foreach (var line in demographics.OrderBy(f => f.lastName).ThenBy(f => f.firstName))
+
+                    var employeeRemittances = remittances.Where(r => r.employeeId.Trim() == line.employeeId.Trim()).ToList();
+
+                    if (employeeRemittances.Count == 0)
+                    {
+                        lineText = new StringBuilder();
+
+                        lineText.Append(CsvStringify("CR")).Append(comma);
+                        lineText.Append(CsvStringify(payGroupId)).Append(comma);
+                        lineText.Append(CsvStringify(line.employeeSsn.Replace("-", string.Empty).Trim())).Append(comma);
+                        lineText.Append(comma); // EMPLOYEE ID - NOT USING
+                        lineText.Append(CsvStringify(line.firstName.Trim())).Append(comma);
+                        lineText.Append(CsvStringify(line.middleInit)).Append(comma);
+                        lineText.Append(CsvStringify(line.lastName.Trim())).Append(comma);
+                        lineText.Append(CsvStringify(line.address1.Trim())).Append(comma);
+                        lineText.Append(CsvStringify(line.address2.Trim())).Append(comma);
+                        lineText.Append(CsvStringify(line.addressCity)).Append(comma);
+                        lineText.Append(CsvStringify(line.addressState)).Append(comma);
+                        lineText.Append(CsvStringify(line.addressZip.Replace("-", string.Empty))).Append(comma);
+                        lineText.Append(CsvStringify(payrollFrequency)).Append(comma);
+                        lineText.Append(CsvStringify(payrollDate)).Append(comma);
+                        lineText.Append(CsvStringify("0000000")).Append(comma);
+                        lineText.Append(CsvStringify("0000000")).Append(comma);
+                        lineText.Append(CsvStringify("0000000")).Append(comma);
+                        lineText.Append(CsvStringify("0000000")).Append(comma);
+                        lineText.Append(CsvStringify("0000000")).Append(comma); // Contribution Slot 5 - NOT USING
+                        lineText.Append(CsvStringify("00")).Append(comma);
+                        lineText.Append(CsvStringify(line.birthDate.ToString("MMddyyyy"))).Append(comma);
+                        lineText.Append(CsvStringify(line.hireDate.ToString("MMddyyyy"))).Append(comma);
+                        lineText.Append(CsvStringify(line.homePhone.Trim().Replace("(", string.Empty).Replace(")", string.Empty).Replace("-", string.Empty).Trim())).Append(comma);
+                        lineText.Append(CsvStringify(line.address3)).Append(comma);
+                        lineText.Append(CsvStringify(line.genderId)).Append(comma);
+                        lineText.Append(CsvStringify(line.maritalStatus)).Append(comma);
+                        lineText.Append(CsvStringify(line.activeStatus)).Append(comma);
+
+                        if (line.activeStatus == "T")
+                        {
+                            lineText.Append(CsvStringify(((DateTime)line.statusChange).ToString("MMddyyyy"))).Append(comma);
+                        }
+                        else
+                        {
+                            lineText.Append(comma);
+                        }
+
+                        lineText.Append(CsvStringify(locationCode)).Append(comma);
+                        lineText.Append(comma); // HR Sub Area
+                        lineText.Append(CsvStringify(payrollStatus)).Append(comma);
+                        lineText.Append(FormatDecimalAmount(line.annualSalary, 10)).Append(comma);
+                        lineText.Append(comma); // Hours
+                        lineText.Append(comma); // Email
+                        lineText.Append(comma); // Employee Plan
+                        lineText.Append(comma); // Eligibility Date
+                        lineText.Append(comma); // Eligibility Date
+                        lineText.Append(comma); // Vesting Date
+                        lineText.Append(comma); // Vesting Date
+                        lineText.Append(comma); // Prior Employee ID
+
+
+                        writer.WriteLine(lineText.ToString());
+
+                    }
+                    else
                     {
 
-                        DateTime today = DateTime.Today;
-                        int employeeAge = today.Year - line.birthDate.Year;
-
-                        if (line.birthDate.Date > today.Date.AddYears(-employeeAge))
+                        if (employeeRemittances.Count == 1)
                         {
-                            employeeAge--;
-                        }
 
-                        if (employeeAge < 21)
-                        {
-                            continue;
-                        }
+                            var remittance = employeeRemittances.FirstOrDefault();
 
-                        string payrollDate = parameters.payDate.ToString("MMddyyyy");
-
-                        string payrollFrequency = string.Empty;
-                        string payrollStatus = string.Empty;
-                        string locationCode = string.Empty;
-
-                        switch (parameters.companyId)
-                        {
-                            case "CFS":
-                                payrollFrequency = "BW";
-                                locationCode = "0001";
-                                break;
-                            case "SGF":
-                                payrollFrequency = "SM";
-                                locationCode = "0002";
-                                break;
-                        }
-
-
-                        switch (line.payrollStatus)
-                        {
-                            case "RFT":
-                                payrollStatus = "FT";
-                                break;
-                            case "RPT":
-                                payrollStatus = "PT";
-                                break;
-                            default:
-                                payrollStatus = "HO";
-                                break;
-                        }
-
-
-                        // CANADIAN ADDRESS (ONTARIO ONLY)
-                        if (line.addressState.Trim() == "ON")
-                        {
-                            line.address3 = string.Format("{0}, {1}, {2}", line.addressCity, line.addressState, line.addressZip);
-                            line.addressCity = "Canada";
-                            line.addressState = "ZZ";
-                            line.addressZip = "000000000";
-                        }
-
-
-                        var employeeRemittances = remittances.Where(r => r.employeeId.Trim() == line.employeeId.Trim()).ToList();
-
-                        if (employeeRemittances.Count == 0)
-                        {
                             lineText = new StringBuilder();
 
                             lineText.Append(CsvStringify("CR")).Append(comma);
@@ -1053,12 +1133,12 @@ namespace Cfs.Custom.Software
                             lineText.Append(CsvStringify(line.addressZip.Replace("-", string.Empty))).Append(comma);
                             lineText.Append(CsvStringify(payrollFrequency)).Append(comma);
                             lineText.Append(CsvStringify(payrollDate)).Append(comma);
-                            lineText.Append(CsvStringify("0000000")).Append(comma);
-                            lineText.Append(CsvStringify("0000000")).Append(comma);
-                            lineText.Append(CsvStringify("0000000")).Append(comma);
-                            lineText.Append(CsvStringify("0000000")).Append(comma);
+                            lineText.Append(FormatDecimalAmount(remittance.employeeAmount, 7)).Append(comma);
+                            lineText.Append(FormatDecimalAmount(remittance.employeeRoth, 7)).Append(comma);
+                            lineText.Append(FormatDecimalAmount(remittance.employerAmount, 7)).Append(comma);
+                            lineText.Append(FormatDecimalAmount(remittance.loanRepayment, 7)).Append(comma);
                             lineText.Append(CsvStringify("0000000")).Append(comma); // Contribution Slot 5 - NOT USING
-                            lineText.Append(CsvStringify("00")).Append(comma);
+                            lineText.Append(CsvStringify(remittance.loanId == null ? string.Empty : remittance.loanId.Trim().PadLeft(2, '0'))).Append(comma);
                             lineText.Append(CsvStringify(line.birthDate.ToString("MMddyyyy"))).Append(comma);
                             lineText.Append(CsvStringify(line.hireDate.ToString("MMddyyyy"))).Append(comma);
                             lineText.Append(CsvStringify(line.homePhone.Trim().Replace("(", string.Empty).Replace(")", string.Empty).Replace("-", string.Empty).Trim())).Append(comma);
@@ -1095,11 +1175,8 @@ namespace Cfs.Custom.Software
                         }
                         else
                         {
-
-                            if (employeeRemittances.Count == 1)
+                            foreach (var remittance in employeeRemittances.OrderBy(r => r.sortOrder).ToList())
                             {
-
-                                var remittance = employeeRemittances.FirstOrDefault();
 
                                 lineText = new StringBuilder();
 
@@ -1155,80 +1232,19 @@ namespace Cfs.Custom.Software
 
 
                                 writer.WriteLine(lineText.ToString());
-
                             }
-                            else
-                            {
-                                foreach (var remittance in employeeRemittances.OrderBy(r => r.sortOrder).ToList())
-                                {
-
-                                    lineText = new StringBuilder();
-
-                                    lineText.Append(CsvStringify("CR")).Append(comma);
-                                    lineText.Append(CsvStringify(payGroupId)).Append(comma);
-                                    lineText.Append(CsvStringify(line.employeeSsn.Replace("-", string.Empty).Trim())).Append(comma);
-                                    lineText.Append(comma); // EMPLOYEE ID - NOT USING
-                                    lineText.Append(CsvStringify(line.firstName.Trim())).Append(comma);
-                                    lineText.Append(CsvStringify(line.middleInit)).Append(comma);
-                                    lineText.Append(CsvStringify(line.lastName.Trim())).Append(comma);
-                                    lineText.Append(CsvStringify(line.address1.Trim())).Append(comma);
-                                    lineText.Append(CsvStringify(line.address2.Trim())).Append(comma);
-                                    lineText.Append(CsvStringify(line.addressCity)).Append(comma);
-                                    lineText.Append(CsvStringify(line.addressState)).Append(comma);
-                                    lineText.Append(CsvStringify(line.addressZip.Replace("-", string.Empty))).Append(comma);
-                                    lineText.Append(CsvStringify(payrollFrequency)).Append(comma);
-                                    lineText.Append(CsvStringify(payrollDate)).Append(comma);
-                                    lineText.Append(FormatDecimalAmount(remittance.employeeAmount, 7)).Append(comma);
-                                    lineText.Append(FormatDecimalAmount(remittance.employeeRoth,7)).Append(comma);
-                                    lineText.Append(FormatDecimalAmount(remittance.employerAmount,7)).Append(comma);
-                                    lineText.Append(FormatDecimalAmount(remittance.loanRepayment,7)).Append(comma);
-                                    lineText.Append(CsvStringify("0000000")).Append(comma); // Contribution Slot 5 - NOT USING
-                                    lineText.Append(CsvStringify(remittance.loanId == null ? string.Empty : remittance.loanId.Trim().PadLeft(2, '0'))).Append(comma);
-                                    lineText.Append(CsvStringify(line.birthDate.ToString("MMddyyyy"))).Append(comma);
-                                    lineText.Append(CsvStringify(line.hireDate.ToString("MMddyyyy"))).Append(comma);
-                                    lineText.Append(CsvStringify(line.homePhone.Trim().Replace("(", string.Empty).Replace(")", string.Empty).Replace("-", string.Empty).Trim())).Append(comma);
-                                    lineText.Append(CsvStringify(line.address3)).Append(comma);
-                                    lineText.Append(CsvStringify(line.genderId)).Append(comma);
-                                    lineText.Append(CsvStringify(line.maritalStatus)).Append(comma);
-                                    lineText.Append(CsvStringify(line.activeStatus)).Append(comma);
-
-                                    if (line.activeStatus == "T")
-                                    {
-                                        lineText.Append(CsvStringify(((DateTime)line.statusChange).ToString("MMddyyyy"))).Append(comma);
-                                    }
-                                    else
-                                    {
-                                        lineText.Append(comma);
-                                    }
-
-                                    lineText.Append(CsvStringify(locationCode)).Append(comma);
-                                    lineText.Append(comma); // HR Sub Area
-                                    lineText.Append(CsvStringify(payrollStatus)).Append(comma);
-                                    lineText.Append(FormatDecimalAmount(line.annualSalary, 10)).Append(comma);
-                                    lineText.Append(comma); // Hours
-                                    lineText.Append(comma); // Email
-                                    lineText.Append(comma); // Employee Plan
-                                    lineText.Append(comma); // Eligibility Date
-                                    lineText.Append(comma); // Eligibility Date
-                                    lineText.Append(comma); // Vesting Date
-                                    lineText.Append(comma); // Vesting Date
-                                    lineText.Append(comma); // Prior Employee ID
 
 
-                                    writer.WriteLine(lineText.ToString());
-                                }
-
-
-                            }
                         }
-
-
-
-
-                        
-
                     }
+
+
+
+
+
+
                 }
+            }
             //}
             //catch (Exception ex)
             //{
@@ -1249,7 +1265,7 @@ namespace Cfs.Custom.Software
             this.dataWorker.ReportProgress(100, "Remittance file created.");
 
 
-           
+
 
             Data.ValicFileSummary summary = new Data.ValicFileSummary()
             {
@@ -1276,7 +1292,7 @@ namespace Cfs.Custom.Software
 
 
             args.Result = summary;
-            
+
         }
 
 
@@ -1310,7 +1326,7 @@ namespace Cfs.Custom.Software
                 this.btnGenerateRemittanceFile.Enabled = true;
                 //this.progressLabel.Text = "File generated.";
 
-                
+
 
 
                 if (e.Result == null)
