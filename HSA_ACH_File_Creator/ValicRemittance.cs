@@ -621,7 +621,7 @@ namespace Cfs.Custom.Software
 
         private void dataWorker_DoWork(object sender, DoWorkEventArgs args)
         {
-            Data.ValicRemittanceParameters parameters = (Data.ValicRemittanceParameters)args.Argument;
+            Data.ValicRemittanceParameters parameters = (Data.ValicRemittanceParameters)args.Argument; 
 
             string connString = @"Provider=vfpoledb;Data Source=\\cfs-hrms\abra\data;Collating Sequence=general;";
             //string connString = @"Provider=vfpoledb;Data Source=\\cfs-hrms\abra\sample;Collating Sequence=general;";
