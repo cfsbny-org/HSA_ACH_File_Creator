@@ -139,6 +139,7 @@ namespace Cfs.Custom.Software
                 }
 
                 string taxId = "161004825";
+                string company="CHILD & FAMILY SERVICES";
 
                 switch (achFile.achCompany)
                 {
@@ -150,6 +151,7 @@ namespace Cfs.Custom.Software
                         break;
                     case "SYB":
                         taxId = "462867677";
+                        company ="SAY YES BUFFALO";
                         break;
                 }
 
@@ -157,19 +159,19 @@ namespace Cfs.Custom.Software
                 using (StreamWriter sw = new StreamWriter(fileName))
                 {
                     // FILE HEADER RECORD
-                    sw.Write("1");
-                    sw.Write("01");
-                    sw.Write(" 021300077");
-                    sw.Write(" " + taxId);
-                    sw.Write(DateTime.Today.ToString("yyMMdd"));
-                    sw.Write(DateTime.Now.ToString("hhmm"));
-                    sw.Write("A");
-                    sw.Write("094");
-                    sw.Write("10");
-                    sw.Write("1");
-                    sw.Write(this.formatFixedLengthText("KeyBank", 23));
-                    sw.Write(this.formatFixedLengthText(@"CHILD & FAMILY SERVICES", 23));
-                    sw.Write(batchId.ToString().PadLeft(8, '0'));  
+                    sw.Write("1");// 1
+                    sw.Write("01");//2-3
+                    sw.Write(" 021300077");//4-13
+                    sw.Write(" " + taxId);// 14-23
+                    sw.Write(DateTime.Today.ToString("yyMMdd"));//24-29
+                    sw.Write(DateTime.Now.ToString("hhmm"));//30-33
+                    sw.Write("A");//34
+                    sw.Write("094");//35-37
+                    sw.Write("10");//38-39
+                    sw.Write("1");//40
+                    sw.Write(this.formatFixedLengthText("KeyBank", 23));//41-63
+                    sw.Write(this.formatFixedLengthText(company, 23));//64-86
+                    sw.Write(batchId.ToString().PadLeft(8, '0'));  //87-94
                     sw.Write(sw.NewLine);
 
                     // BATCH HEADER RECORD
@@ -255,7 +257,7 @@ namespace Cfs.Custom.Software
                     sw.Write(this.addEmptyFixedLengthText(19));
                     sw.Write(this.addEmptyFixedLengthText(6));
                     sw.Write("02130007");
-                    sw.Write("0000001");
+                    sw.Write(batchId.ToString().PadLeft(7, '0'));
                     sw.Write(sw.NewLine);
 
                     double lineCountDiv = (lineCount + 4) / 10;
