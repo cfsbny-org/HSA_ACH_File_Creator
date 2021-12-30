@@ -87,10 +87,10 @@ namespace Cfs.Custom.Software
             if (this.openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filePath = this.openFileDialog1.FileName;
-
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
                 ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
 
-                ExcelWorksheet sheet = package.Workbook.Worksheets[1];
+                ExcelWorksheet sheet = package.Workbook.Worksheets[0];
 
 
                 Data.ACHFile newFile = new Cfs.Custom.Software.Data.ACHFile();
