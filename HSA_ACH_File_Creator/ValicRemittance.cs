@@ -98,8 +98,8 @@ namespace Cfs.Custom.Software
                         string filePath = this.openDemoFileDialog.FileName;
 
                         ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
-
-                        ExcelWorksheet demoSheet = package.Workbook.Worksheets[1];
+                        ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                        ExcelWorksheet demoSheet = package.Workbook.Worksheets[0];
 
                         string currentSsn = string.Empty;
 
@@ -162,7 +162,7 @@ namespace Cfs.Custom.Software
 
                         ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
 
-                        ExcelWorksheet deductSheet = package.Workbook.Worksheets[1];
+                        ExcelWorksheet deductSheet = package.Workbook.Worksheets[0];
                         string currentEmployeeId = string.Empty;
                         string currentEmployeeName = string.Empty;
 
