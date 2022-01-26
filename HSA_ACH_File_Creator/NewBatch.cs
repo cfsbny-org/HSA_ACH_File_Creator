@@ -90,8 +90,9 @@ namespace Cfs.Custom.Software
                 ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
                 ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
 
-                ExcelWorksheet sheet = package.Workbook.Worksheets[1];
-
+                //ExcelWorksheet sheet = package.Workbook.Worksheets[1];
+                var sheetList = package.Workbook.Worksheets.ToList();
+                ExcelWorksheet sheet = sheetList.First();
 
                 Data.ACHFile newFile = new Cfs.Custom.Software.Data.ACHFile();
 

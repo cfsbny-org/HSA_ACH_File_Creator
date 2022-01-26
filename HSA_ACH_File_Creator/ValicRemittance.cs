@@ -99,7 +99,10 @@ namespace Cfs.Custom.Software
 
                         ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
                         ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-                        ExcelWorksheet demoSheet = package.Workbook.Worksheets[0];
+                        //ExcelWorksheet demoSheet = package.Workbook.Worksheets[0];
+                        
+                        var demosheetList = package.Workbook.Worksheets.ToList();
+                        ExcelWorksheet demoSheet = demosheetList.First();
 
                         string currentSsn = string.Empty;
 
@@ -162,7 +165,10 @@ namespace Cfs.Custom.Software
 
                         ExcelPackage package = new ExcelPackage(new FileInfo(filePath));
 
-                        ExcelWorksheet deductSheet = package.Workbook.Worksheets[0];
+                        //ExcelWorksheet deductSheet = package.Workbook.Worksheets[0];
+                        
+                        var deductsheetList = package.Workbook.Worksheets.ToList();
+                        ExcelWorksheet deductSheet = deductsheetList.First();
                         string currentEmployeeId = string.Empty;
                         string currentEmployeeName = string.Empty;
 
