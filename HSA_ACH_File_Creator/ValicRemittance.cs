@@ -346,10 +346,10 @@ namespace Cfs.Custom.Software
                                 employeeAge--;
                             }
 
-                            if (employeeAge < 21)
-                            {
-                                continue;
-                            }
+                            //if (employeeAge < 21)
+                            //{
+                            //    continue;
+                            //}
 
                             string payrollDate = parameters.payDate.ToString("MMddyyyy");
 

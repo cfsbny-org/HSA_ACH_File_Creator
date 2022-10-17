@@ -36,6 +36,7 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aCHBatchToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.valicResponseFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.valicPaidOffLoansReportFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.printTimesheetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportPayStubsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@
             this.aboutHSAACHFileCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.benefitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createVisionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.valicPaidOffLoansReportFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -127,6 +127,13 @@
             this.valicResponseFileToolStripMenuItem.Text = "Valic Loan Feedback File";
             this.valicResponseFileToolStripMenuItem.Click += new System.EventHandler(this.valicResponseFileToolStripMenuItem_Click);
             // 
+            // valicPaidOffLoansReportFileToolStripMenuItem
+            // 
+            this.valicPaidOffLoansReportFileToolStripMenuItem.Name = "valicPaidOffLoansReportFileToolStripMenuItem";
+            this.valicPaidOffLoansReportFileToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.valicPaidOffLoansReportFileToolStripMenuItem.Text = "Valic Paid Off Loans Report File";
+            this.valicPaidOffLoansReportFileToolStripMenuItem.Click += new System.EventHandler(this.valicPaidOffLoansReportFileToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -202,13 +209,6 @@
             this.createVisionFileToolStripMenuItem.Text = "Create &Vision File";
             this.createVisionFileToolStripMenuItem.Click += new System.EventHandler(this.createVisionFileToolStripMenuItem_Click);
             // 
-            // valicPaidOffLoansReportFileToolStripMenuItem
-            // 
-            this.valicPaidOffLoansReportFileToolStripMenuItem.Name = "valicPaidOffLoansReportFileToolStripMenuItem";
-            this.valicPaidOffLoansReportFileToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.valicPaidOffLoansReportFileToolStripMenuItem.Text = "Valic Paid Off Loans Report File";
-            this.valicPaidOffLoansReportFileToolStripMenuItem.Click += new System.EventHandler(this.valicPaidOffLoansReportFileToolStripMenuItem_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,8 +219,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
-            this.Text = "HSA ACH File Creator";
+            this.Text = "HSA ACH File Creator (2022-10-17)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
