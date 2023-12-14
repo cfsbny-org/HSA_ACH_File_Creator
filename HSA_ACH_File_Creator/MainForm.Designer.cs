@@ -219,7 +219,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
-            this.Text = "HSA ACH File Creator (2022-10-17)";
+            this.Text = "HSA ACH File Creator (2023-12-14)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);

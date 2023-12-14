@@ -221,7 +221,8 @@ namespace Cfs.Custom.Software
 
                         var rothTotal = employeeDeductions.Where(d => d.deductionCode.Contains("ROT")).Select(d => d.employeeAmount).Sum();
 
-                        var employerTotal = employeeDeductions.Where(d => d.deductionCode == "403ER").Select(d => d.employerAmount).Sum();
+                        var employerTotal = employeeDeductions.Where(d => d.deductionCode == "403ER").Select(d => d.employerAmount).Sum()+
+                            employeeDeductions.Where(d => d.deductionCode.Substring(0,4) == "HSAS").Select(d => d.employerAmount).Sum();
 
                         var employeeLoans = employeeDeductions.Where(d => d.deductionCode.Contains("403L")).ToList();
 
