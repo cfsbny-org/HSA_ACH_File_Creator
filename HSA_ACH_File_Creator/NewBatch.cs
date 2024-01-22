@@ -136,6 +136,7 @@ namespace Cfs.Custom.Software
                         case "HSAS":
                         case "HSASF":
                         case "HSASI":
+                        case "403CP":
                             erAmount = decimal.Parse(sheet.Cells[row, 9].Value.ToString());
                             break;
                         default:
